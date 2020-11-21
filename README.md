@@ -10,23 +10,23 @@ cp .env.example .env
 docker-compose up
 ```
 
-### laravel をインストールし、初期設定を行う（初回のみ）
+### Laravel をインストールし、初期設定を行う（初回のみ）
 ```
-# laravel と依存ライブラリをインストールする
+# Laravel と依存ライブラリをインストールする
 cd laradock
 docker-compose exec workspace composer install
 
-# laravel の環境設定ファイルを作成する
+# Laravel の環境設定ファイルを作成する
 cd ../laravel
 cp .env.example .env
 
-# laravel のアプリケーションキーを生成する（生成したキーは .env に記載される）
+# Laravel のアプリケーションキーを生成する（生成したキーは .env に記載される）
 # 参考: https://laravel.com/docs/6.x/installation#configuration
 # TODO: 共同開発で使うアプリケーションキーを決める
 cd ../laradock
 docker-compose exec workspace php artisan key:generate
 
-# laravel/storage への進歩リックリンクを laravel/public/storage に作成する
+# laravel/storage へのシンボリックリンクを laravel/public/storage に作成する
 # 参考: https://laravel.com/docs/6.x/structure#the-storage-directory
 docker-compose exec workspace php artisan storage:link
 ```
